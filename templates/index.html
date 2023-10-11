@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zuma Game</title>
+</head>
+<body>
+    <h1>Welcome to Zuma Game</h1>
+    <button onclick="shootBall('red')">Shoot Red Ball</button>
+    <button onclick="shootBall('blue')">Shoot Blue Ball</button>
+    <button onclick="shootBall('green')">Shoot Green Ball</button>
+    <div id="message"></div>
+    <script>
+        function shootBall(color) {
+            fetch(`/shoot_ball/${color}`)
+                .then(response => response.text())
+                .then(data => document.getElementById('message').innerHTML = data)
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
